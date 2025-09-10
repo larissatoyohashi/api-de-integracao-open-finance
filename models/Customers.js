@@ -14,7 +14,7 @@ const customerSchema = new mongoose.Schema({
     },
 
     cpf : {
-        type : String,
+        type : Number,
         required : true,
         unique : true,
     },
@@ -24,11 +24,14 @@ const customerSchema = new mongoose.Schema({
         required : true,
     },
 
-    accounts: {
-        type : Schema.Types.ObjectId,
+    accounts: [{
+        type : String,
         ref : 'Account'
-    },
-        _id : false
+    }]
+
+    }, {
+        _id : false,
+        versionKey : false
 
 });
 

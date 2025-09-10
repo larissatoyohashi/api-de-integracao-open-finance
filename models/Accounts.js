@@ -19,18 +19,21 @@ const accountSchema = new mongoose.Schema({
     },
 
     balance : {
+       type: Schema.Types.Decimal128,
+       required: true,
+       default : '0.00'
+    },
+
+    transactions : [{
         type : String,
-        required : true
-    },
-
-    transactions : {
-        type : Schema.Types.ObjectId,
         ref : 'Transaction'
-    },
+    }],
+  
+}, {
+        _id : false,
+        versionKey : false
+});
 
-    _id : false
-
-})
 
 const Account = mongoose.model('Account', accountSchema);
 

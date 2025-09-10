@@ -17,6 +17,24 @@ const transactionSchema = new mongoose.Schema({
         required : true
     },
 
+    amount : {
+        type: Schema.Types.Decimal128,
+        required: true
+    }, 
+    type : {
+        type : String,
+        required : true
+    },
+
+    category : {
+        type : String,
+        required : true
+    }
 
 
 })
+
+
+const Transaction = mongoose.model('Transaction', transactionSchema);
+
+export default Transaction;
