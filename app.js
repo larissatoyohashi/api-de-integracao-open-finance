@@ -3,7 +3,6 @@ import mongoose from "mongoose";
 import Customer from "./models/Customers.js";
 import accountRoutes from "./routes/accountRoutes.js"
 import customerRoutes from "./routes/customerRoutes.js";
-import accountRoutes from "./routes/accountRoutes.js";
 
 
 const app = express();

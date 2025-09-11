@@ -15,8 +15,7 @@ class accountService {
                 _id : `acc_${uuidv4().slice(0, 3)}`,
                 type,
                 branch, 
-                number,
-                balance
+                number
             })
 
             await createAccountForCustomer.save();
@@ -43,8 +42,6 @@ class accountService {
                 console.log(error);
             }
         }
-        
-
         
 
 }

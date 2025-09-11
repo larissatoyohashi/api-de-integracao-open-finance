@@ -2,10 +2,7 @@ import Customer from "../models/Customers.js"
 import Account from "../models/Accounts.js"
 import { v4 as uuidv4 } from 'uuid';
 
-
-   
 class customerService {
-
 
     async Create( _id, name, cpf , email ){
 
@@ -29,19 +26,6 @@ class customerService {
             return customers;
         } catch (error){
             console.log(error);
-        }
-    }
-
-    async UpdateAcc(accounts){
-        try {
-
-            await Customer.findByIdAndUpdate(id, {
-                accounts
-            });
-            console.log(`Conta adicionada ao cliente com o id ${id} com sucesso.`)
-            return customer;
-        } catch(error){
-            console.log(error)
         }
     }
 }
