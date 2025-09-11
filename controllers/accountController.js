@@ -21,8 +21,7 @@ const getBalanceFromAccount = async(req,res) => {
 }
 
 const createAccount = async (req,res) => {
-    try {
-        
+    try {  
         const { _id, type, branch, number, balance } = req.body;
         const newAccount = await accountService.CreateAccountForCustomer(_id, type, branch, number, balance);
         res.status(201).json({ account: newAccount });

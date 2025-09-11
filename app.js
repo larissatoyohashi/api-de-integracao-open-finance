@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import Customer from "./models/Customers.js";
 import accountRoutes from "./routes/accountRoutes.js"
 import customerRoutes from "./routes/customerRoutes.js";
+import transactionRoutes from "./routes/transactionRoutes.js"
 
 
 const app = express();
@@ -11,6 +12,8 @@ app.use(express.urlencoded({extended : false}));
 app.use(express.json());
 app.use('/',customerRoutes);
 app.use('/',accountRoutes);
+app.use('/',transactionRoutes);
+
 
 
 mongoose.connect("mongodb://127.0.0.1:27017/api");
