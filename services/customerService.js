@@ -1,4 +1,5 @@
 import Customer from "../models/Customers.js"
+import Account from "../models/Accounts.js"
 import { v4 as uuidv4 } from 'uuid';
 
 class customerService {

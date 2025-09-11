@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const accountSchema = new mongoose.Schema({
     _id : {
         type : String,
-        required : true
+        required : true,
     },
 
     type : String,
@@ -19,8 +19,7 @@ const accountSchema = new mongoose.Schema({
     },
 
     balance : {
-       type: Schema.Types.Decimal128,
-       required: true,
+       type: mongoose.Schema.Types.Decimal128,
        default : '0.00'
     },
 

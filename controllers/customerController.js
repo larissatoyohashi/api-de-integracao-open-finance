@@ -18,6 +18,7 @@ const createCustomer = async (req,res) => {
     } catch (error){
         res.status(500).json({error: 'Erro interno do Servidor'});
     }
+
 }
 
 export default {getAllcustomers, createCustomer};

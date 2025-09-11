@@ -1,4 +1,5 @@
 import accountService from "../services/accountService.js";
+import customerService from "../services/customerService.js";
 
 const getAllaccounts = async(req,res) => {
     try{
@@ -10,11 +11,14 @@ res.status(200).json({accounts : accounts});
 }
 }
 
+
 const createAccount = async (req,res) => {
     try {
-        const {_id, branch, number, balance} = req.body;
-        await accountService.Create(_id, branch, number, balance)
-        res.sendStatus(201)
+        
+        const { _id, type, branch, number, balance } = req.body;
+        const newAccount = await accountService.CreateAccountForCustomer(_id, type, branch, number, balance);
+        res.status(201).json({ account: newAccount });
+
     } catch (error){
         res.status(500).json({error: 'Erro interno do Servidor'});
     }
