@@ -1,6 +1,7 @@
 import accountService from "../services/accountService.js";
 import customerService from "../services/customerService.js";
 
+
 const getAllaccounts = async(req,res) => {
     try{
 const accounts = await accountService.getAll()
@@ -23,5 +24,7 @@ const createAccount = async (req,res) => {
         res.status(500).json({error: 'Erro interno do Servidor'});
     }
 }
+
+
 
 export default {getAllaccounts, createAccount};
