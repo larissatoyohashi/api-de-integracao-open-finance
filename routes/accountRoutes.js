@@ -4,6 +4,8 @@ import accountController from "../controllers/accountController.js";
 
 accountRoutes.get("/accounts", accountController.getAllaccounts);
 
-accountRoutes.post("/accounts", accountController.createAccount)
+accountRoutes.get("/accounts/:id", accountController.getBalanceFromAccount)
+
+accountRoutes.post("/accounts", accountController.createAccount);
 
 export default accountRoutes

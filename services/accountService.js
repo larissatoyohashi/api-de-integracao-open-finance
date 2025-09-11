@@ -2,6 +2,7 @@ import Account from "../models/Accounts.js";
 import Customer from "../models/Customers.js"
 import { v4 as uuidv4 } from 'uuid';
 
+
 class accountService {
 
     async CreateAccountForCustomer (_id, type, branch, number) {
@@ -31,8 +32,6 @@ class accountService {
         }
     }
 
-    
-
      async getAll()
         {
             try {
@@ -42,6 +41,15 @@ class accountService {
                 console.log(error);
             }
         }
+
+    async getOne(id){
+        try{
+            const accounts = await Account.findOne({id : id}).select('balance');
+            return accounts;
+        } catch(error){
+            console.log(error);
+        }
+    }
         
 
 }
