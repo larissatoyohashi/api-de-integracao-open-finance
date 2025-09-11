@@ -19,9 +19,8 @@ const accountSchema = new mongoose.Schema({
     },
 
     balance : {
-       type: Schema.Types.Decimal128,
-       required: true,
-       default : '0.00'
+       type: mongoose.Schema.Types.Decimal128,
+       default : 1000.20
     },
 
     transactions : [{
@@ -36,5 +35,6 @@ const accountSchema = new mongoose.Schema({
 
 
 const Account = mongoose.model('Account', accountSchema);
+
 
 export default Account;
