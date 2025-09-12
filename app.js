@@ -4,6 +4,7 @@ import Customer from "./models/Customers.js";
 import accountRoutes from "./routes/accountRoutes.js"
 import customerRoutes from "./routes/customerRoutes.js";
 import transactionRoutes from "./routes/transactionRoutes.js"
+import permissionRoutes from "./routes/permissionRoutes.js"
 
 
 const app = express();
@@ -13,6 +14,7 @@ app.use(express.json());
 app.use('/',customerRoutes);
 app.use('/',accountRoutes);
 app.use('/',transactionRoutes);
+app.use('/',permissionRoutes)
 
 
 

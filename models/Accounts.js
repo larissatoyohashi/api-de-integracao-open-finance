@@ -31,6 +31,16 @@ const accountSchema = new mongoose.Schema({
 }, {
         _id : false,
         versionKey : false
+}, {
+    toJSON: {
+        transform: function (doc, ret) {
+
+              if (ret.balance && ret.balance.$numberDecimal) {
+                ret.balance = parseFloat(ret.balance.$numberDecimal);
+            }
+        }
+    }
+
 });
 
 

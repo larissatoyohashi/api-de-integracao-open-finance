@@ -1,6 +1,10 @@
+import mongoose from "mongoose";
 import Transaction from "../models/Transactions.js"
 import Account from "../models/Accounts.js"
-import { v4 as uuidv4 } from 'uuid';
+import Decimal from 'decimal.js';
+import { randomInt } from 'node:crypto';
+
+
 
 class transactionService{
 
@@ -8,29 +12,48 @@ class transactionService{
         try {
             const account = await Account.findById(_id);
 
-            if(!account){
-               console.log('Conta não encontrada.');
+            if (!account) {
+                throw new Error('Conta não encontrada.');
             }
+            const currentBalance = new Decimal(account.balance.toString());
+            const transactionAmount = new Decimal(amount.toString());
             
+            let newBalance; 
+
             const normalizedType = type.toLowerCase();
             
-            if (normalizedType === 'credit') {
-                if(account.balance < amount){
-                    console.log('Saldo insuficiente para realizar a operação.');
+            if (normalizedType === 'credit') { 
+                if (currentBalance.lessThan(transactionAmount)) {
+                    throw new Error('Saldo insuficiente para realizar a operação.');
+                }
+                newBalance = currentBalance.sub(transactionAmount); 
+            } else if (normalizedType === 'debit') {
+                newBalance = currentBalance.add(transactionAmount); 
+            } else {
+                throw new Error('Tipo de transação inválido');
+            }
+
+            account.balance = mongoose.Types.Decimal128.fromString(newBalance.toFixed(2));
+
+            let newTransactionId;
+            let idExists = true;
+
+            while (idExists) {
+                const randomNumber = randomInt(0, 999).toString().padStart(3, '0');
+                newTransactionId = `txn_${randomNumber}`;
+                const existingTransaction = await Transaction.findById(newTransactionId);
+
+                if (!existingTransaction) {
+                    idExists = false;
                 }
 
-                account.balance -= amount;
-            } else if (normalizedType ==='debit'){
-                    account.balance += amount;
-                } else {
-                    console.log('Transação inválida');
-                }
+            }
 
             const newTransaction = new Transaction({
-                _id: `txn_${uuidv4().slice(0, 3)}`,
+                _id: newTransactionId,
                 date,
                 description,
-                amount,
+                amount, 
                 type,
                 category
             });

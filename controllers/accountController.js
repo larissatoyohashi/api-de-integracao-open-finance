@@ -11,12 +11,19 @@ res.status(200).json({accounts : accounts});
 }
 
 const getBalanceFromAccount = async(req,res) => {
-    try {
-        const accounts = await accountService.getOne();
-        res.status(200).json({accounts : accounts});
-    } catch(error){
+      try {
+        const { id } = req.params;
+        const account = await accountService.getOne(id);
+
+        if (!account) {
+            return res.status(404).json({ message: 'Conta não encontrada' });
+        }
+
+        res.status(200).json(account);
+
+    } catch (error) {
         console.log(error);
-        res.status(500).json({error : 'Erro interno do servidor'})
+        res.status(500).json({ error: 'Erro interno do servidor' });
     }
 }
 

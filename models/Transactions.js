@@ -30,6 +30,18 @@ const transactionSchema = new mongoose.Schema({
         type : String,
         required : true
     }
+} , {
+    toJSON: {
+        transform: function (doc, ret) {
+            if (ret.date) {
+                ret.date = ret.date.toISOString().split('T')[0];
+            }
+
+              if (ret.amount && ret.amount.$numberDecimal) {
+                ret.amount = parseFloat(ret.amount.$numberDecimal);
+            }
+        }
+    }
 
 
 })

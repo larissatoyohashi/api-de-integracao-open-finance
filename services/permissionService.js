@@ -1,5 +1,5 @@
 import Permission from "../models/Permissions.js";
-import Account from "../models/Accounts";
+import Account from "../models/Accounts.js";
 
 class permissionService{
 
@@ -9,7 +9,7 @@ class permissionService{
 
             if(!account) {
                 console.log('Conta não encontrada');
-            }
+            } else {
 
             if (consent === 'true'){
             const posPermission = new Permission({
@@ -35,6 +35,7 @@ class permissionService{
                 console.log("Valor inválido")
 
             }
+        }
 
         }catch(error){
             console.log(error)

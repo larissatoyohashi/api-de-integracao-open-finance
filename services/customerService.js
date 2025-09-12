@@ -1,14 +1,29 @@
 import Customer from "../models/Customers.js"
-import Account from "../models/Accounts.js"
-import { v4 as uuidv4 } from 'uuid';
+import { randomInt } from 'node:crypto';
+
 
 class customerService {
 
     async Create( _id, name, cpf , email ){
 
             try {
+
+            let newCustomerId;
+            let idExists = true;
+
+            while (idExists) {
+                const randomNumber = randomInt(0, 999).toString().padStart(3, '0');
+                newCustomerId = `cus_${randomNumber}`;
+                const existingCustomer = await Customer.findById(newCustomerId);
+
+                if (!existingCustomer) {
+                    idExists = false;
+                }
+
+            }
+
                 const newCustomer = new Customer ({
-                    _id : `cus_${uuidv4().slice(0, 3)}`,
+                    _id : newCustomerId,
                     name,
                     cpf,
                     email

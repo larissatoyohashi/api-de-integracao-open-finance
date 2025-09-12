@@ -11,10 +11,7 @@ const permissionSchema = new mongoose.Schema({
     accountId : {
         type : String,
         ref : 'Account'
-    },
-
-    timestamp : true
-    
+    }
 
 })
 
