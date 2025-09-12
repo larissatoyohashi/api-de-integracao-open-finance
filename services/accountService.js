@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 class accountService {
 
-    async CreateAccountForCustomer (_id, type, branch, number) {
+    async createAccountForCustomer (_id, type, branch, number) {
         try {
             const customer = await Customer.findById(_id);
 
