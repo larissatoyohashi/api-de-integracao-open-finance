@@ -11,6 +11,16 @@ Esta é uma API RESTful desenvolvida para atuar como um hub de integração no e
 
 O projeto utiliza **Node.js** e **Express.js** para construir um backend robusto, com o **MongoDB** como banco de dados para armazenar informações e o **Mongoose** para a modelagem desses dados.
 
+## Funcionalidades Principais
+
+- **Criação de Clientes:** Permite registrar novos clientes.
+- **Criação de Contas:** Permite criar uma nova conta bancária e associá-la a um cliente (`Customer`) existente.
+_ **Criação de Transações:** Permite criar uma nova transação de crédito ou débito e associá-la a uma conta (`Account`) existente.
+- **ID Automático:** Gera automaticamente um ID único para cada novo cliente, conta e transação nos formatos `cus_XXX`, `acc_XXX`, `txn_XXX` respectivamente.
+- **Consulta de Saldo:** Endpoint específico para obter o saldo de uma conta de forma rápida e segura.
+- **Listagem de Contas, Clientes e Transações:** Permite visualizar todos os registros cadastrados no sistema.
+- **Precisão Monetária:** Utiliza o tipo `Decimal128` do Mongoose para garantir a precisão no armazenamento de valores de saldo.
+
 ## Tecnonogias utilizadas
 
 - **Node.js**: Ambiente de execução do código no servidor.
@@ -40,6 +50,8 @@ O projeto utiliza **Node.js** e **Express.js** para construir um backend robusto
 ## Executando a API
 
 1. **Para iniciar o servidor:**
-```bash
-    npm start
-```
+    ```bash
+        npm start
+    ```
+O servidor estará disponível em http://localhost:3000
+
