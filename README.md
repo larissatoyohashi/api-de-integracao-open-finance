@@ -25,5 +25,14 @@ O projeto utiliza **Node.js** e **Express.js** para construir um backend robusto
 - [NPM](https://www.npmjs.com/) ou [Yarn](https://yarnpkg.com/)
 - Uma instância do [MongoDB](https://www.mongodb.com/)
 
+## Instalação e configuração
 
+1.  **Clone o repositório:**
+    ```bash
+    git clone [https://github.com/larissatoyohashi/compass-uol-projeto-banco](https://github.com/larissatoyohashi/compass-uol-projeto-banco)
+    ```
 
+2.  **Instale as dependências:**
+    ```bash
+    npm install
+    ```
