@@ -25,7 +25,7 @@ class accountService {
             const customer = await Customer.findById(_id);
 
             if(!customer){
-                console.log('Cliente não encontrado.');
+                throw new Error('Cliente não encontrado.');
             } else {
                  const createAccountForCustomer = new Account({
                 _id : newAccountId,
