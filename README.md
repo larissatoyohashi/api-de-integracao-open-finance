@@ -191,8 +191,7 @@ A seguir estão detalhados os endpoints disponíveis para o recurso de Transaç�
 
 A arquitetura do projeto foi organizada para promover a separação de responsabilidades (Separation of Concerns), facilitando a manutenção e escalabilidade.
 
-    ``` bash
-    .
+``` bash
 ├── controllers/
 │   ├── accountController.js
 │   ├── customerController.js
