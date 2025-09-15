@@ -8,7 +8,7 @@ class permissionService{
             const account = await Account.findOne({_id : accountId});
 
             if(!account) {
-                console.log('Conta não encontrada');
+                throw new Error('Conta não encontrada.');
             } else {
 
             if (consent === 'true'){
@@ -31,9 +31,7 @@ class permissionService{
             await falPermission.save();
             return {permission : falPermission, message:'Compartilhamento de dados não autorizado.'};
             } else {
-
-                console.log("Valor inválido")
-
+                throw new Error('Valor Inválido.');
             }
         }
 
