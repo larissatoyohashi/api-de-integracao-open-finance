@@ -7,7 +7,7 @@
 
 ## 📖 Descrição
 
-Esta é uma API RESTful desenvolvida para atuar como um hub de integração no ecossistema de Open Finance. A plataforma permite a conexão segura entre instituições financeiras e clientes, facilitando o compartilhamento de dados de forma consentida.
+Esta é uma API REST desenvolvida para atuar como um hub de integração no ecossistema de Open Finance. A plataforma permite a conexão segura entre instituições financeiras e clientes, facilitando o compartilhamento de dados de forma consentida.
 
 O projeto utiliza **Node.js** e **Express.js** para construir um backend robusto, com o **MongoDB** como banco de dados para armazenar informações e o **Mongoose** para a modelagem desses dados.
 
