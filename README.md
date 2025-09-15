@@ -61,8 +61,6 @@ A seguir estão detalhados os endpoints disponíveis para o recurso de Clientes 
 
 ### Criar um Novo Cliente
 
-**Cria um novo Cliente**
-
 - **Método:** `POST`
 - **URL:** `/customers`
 - **Corpo da Requisição (JSON):**
@@ -76,7 +74,6 @@ A seguir estão detalhados os endpoints disponíveis para o recurso de Clientes 
 
 ### Consultar Clientes
 
-**Consulta todos os clientes registrados**
 
 - **Método:** `GET`
 - **URL:** `/customers`
@@ -101,8 +98,6 @@ A seguir estão detalhados os endpoints disponíveis para o recurso de Contas (`
 
 ### Criar uma Nova Conta
 
-**Cria uma nova conta bancária e a associa a um cliente existente.**
-
 - **Método:** `POST`
 - **URL:** `/accounts`
 - **Corpo da Requisição (JSON):**
@@ -115,8 +110,6 @@ A seguir estão detalhados os endpoints disponíveis para o recurso de Contas (`
   }
 
 ### Consultar Contas Bancárias
-
-**Consulta todas as contas bancárias registradas.**
 
 - **Método:** `GET`
 - **URL:** `/accounts`
@@ -142,8 +135,6 @@ A seguir estão detalhados os endpoints disponíveis para o recurso de Transaç�
 
 ### Criar uma Nova Transação
 
-**Cria uma nova transação e a associa a uma conta bancária existente.**
-
 - **Método:** `POST`
 - **URL:** `/transactions`
 - **Corpo da Requisição (JSON):**
@@ -160,8 +151,6 @@ A seguir estão detalhados os endpoints disponíveis para o recurso de Transaç�
 
 
 ### Consultar Transações
-
-**Consulta todas as transações registradas.**
 
 - **Método:** `GET`
 - **URL:** `/transactions`
@@ -180,6 +169,3 @@ A seguir estão detalhados os endpoints disponíveis para o recurso de Transaç�
             "category": "Income"
         }
     ]
-
-
-    
