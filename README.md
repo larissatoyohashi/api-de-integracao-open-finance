@@ -55,3 +55,43 @@ _ **Criação de Transações:** Permite criar uma nova transação de crédito 
     ```
 O servidor estará disponível em http://localhost:3000
 
+## Endpoints da API
+
+A seguir estão detalhados os endpoints disponíveis para o recurso de Clientes (`Customers`).
+
+### Criar um Novo Cliente
+
+Cria um novo Cliente
+
+- **Método:** `POST`
+- **URL:** `/customers`
+- **Corpo da Requisição (JSON):**
+  ```json
+  {
+    "name": "Maria Silva",
+    "cpf": "12345678900",
+    "email": "maria.silva@email.com"
+    }
+
+Consultar Clientes
+
+- **Método:** `GET`
+- **URL:** `/customers`
+
+
+A seguir estão detalhados os endpoints disponíveis para o recurso de Contas (`Accounts`).
+
+### Criar uma Nova Conta
+
+Cria uma nova conta bancária e a associa a um cliente existente.
+
+- **Método:** `POST`
+- **URL:** `/accounts`
+- **Corpo da Requisição (JSON):**
+  ```json
+  {
+    "_id": "cus_123",
+    "type": "Corrente",
+    "branch": "001",
+    "number": "12345-6"
+  }
