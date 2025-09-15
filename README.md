@@ -61,11 +61,12 @@ A seguir estão detalhados os endpoints disponíveis para o recurso de Clientes 
 
 ### Criar um Novo Cliente
 
-Cria um novo Cliente
+**Cria um novo Cliente**
 
 - **Método:** `POST`
 - **URL:** `/customers`
 - **Corpo da Requisição (JSON):**
+
   ```json
   {
     "name": "Maria Silva",
@@ -73,25 +74,112 @@ Cria um novo Cliente
     "email": "maria.silva@email.com"
     }
 
-Consultar Clientes
+### Consultar Clientes
+
+**Consulta todos os clientes registrados**
 
 - **Método:** `GET`
 - **URL:** `/customers`
+- **Resposta de Sucesso (200 OK):**
 
+  ```json
+    "customers": [
+            {
+                "_id": "cus_315",
+                "name": "Maria Silva",
+                "cpf": 12345678900,
+                "email": "maria.silva@email.com",
+                "accounts": [
+                    "acc_686"
+                ]
+            }
+        ]
+
+***
 
 A seguir estão detalhados os endpoints disponíveis para o recurso de Contas (`Accounts`).
 
 ### Criar uma Nova Conta
 
-Cria uma nova conta bancária e a associa a um cliente existente.
+**Cria uma nova conta bancária e a associa a um cliente existente.**
 
 - **Método:** `POST`
 - **URL:** `/accounts`
 - **Corpo da Requisição (JSON):**
   ```json
   {
-    "_id": "cus_123",
+    "_id": "cus_315",
     "type": "Corrente",
     "branch": "001",
     "number": "12345-6"
   }
+
+### Consultar Contas Bancárias
+
+**Consulta todas as contas bancárias registradas.**
+
+- **Método:** `GET`
+- **URL:** `/accounts`
+- **Resposta de Sucesso (200 OK):**
+
+  ```json
+    "accounts": [
+        {
+            "balance": {
+                "$numberDecimal": "0.00"
+            },
+            "_id": "acc_847",
+            "branch": "checking",
+            "number": "0001",
+            "transactions": []
+        },
+    ]
+
+
+***
+
+A seguir estão detalhados os endpoints disponíveis para o recurso de Transações (`Transactions`).
+
+### Criar uma Nova Transação
+
+**Cria uma nova transação e a associa a uma conta bancária existente.**
+
+- **Método:** `POST`
+- **URL:** `/transactions`
+- **Corpo da Requisição (JSON):**
+
+  ```json
+    {
+    "_id" : "acc_847",
+    "date" : "2025-09-12",
+    "description" : "Transfer via pix",
+    "amount" : 1000.00,
+    "type" : "debit",
+    "category" : "Income"
+    }
+
+
+### Consultar Transações
+
+**Consulta todas as transações registradas.**
+
+- **Método:** `GET`
+- **URL:** `/transactions`
+- **Resposta de Sucesso (200 OK):**
+
+  ```json
+    "transactions": [
+        {
+            "_id": "txn_c7b",
+            "date": "2025-09-12",
+            "description": "Transfer via pix",
+            "amount": {
+                "$numberDecimal": "1000"
+            },
+            "type": "debit",
+            "category": "Income"
+        }
+    ]
+
+
+    
