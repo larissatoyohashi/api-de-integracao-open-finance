@@ -185,39 +185,33 @@ A seguir estão detalhados os endpoints disponíveis para o recurso de Transaç�
     ]
 ***
 
-.
 
 ## 📂 Estrutura do Projeto
 
 A arquitetura do projeto foi organizada para promover a separação de responsabilidades (Separation of Concerns), facilitando a manutenção e escalabilidade.
 
 ``` bash
-├── controllers/
-│   ├── accountController.js
-│   ├── customerController.js
-│   ├── permissionController.js
-│   └── transactionController.js
-├── models/
-│   ├── Accounts.js
-│   ├── Customers.js
-│   ├── Permissions.js
-│   └── Transactions.js
-├── routes/
-│   ├── accountRoutes.js
-│   ├── customerRoutes.js
-│   ├── permissionRoutes.js
-│   └── transactionRoutes.js
-├── services/
-│   └── (Arquivos com a lógica de negócio)
-├── .gitignore
-├── app.js
-├── LICENSE
-├── package.json
-└── README.md
+    ├── controllers/
+    │   ├── accountController.js
+    │   ├── customerController.js
+    │   ├── permissionController.js
+    │   └── transactionController.js
+    ├── models/
+    │   ├── Accounts.js
+    │   ├── Customers.js
+    │   ├── Permissions.js
+    │   └── Transactions.js
+    ├── routes/
+    │   ├── accountRoutes.js
+    │   ├── customerRoutes.js
+    │   ├── permissionRoutes.js
+    │   └── transactionRoutes.js
+    ├── services/
+    │   └── (Arquivos com a lógica de negócio)
+    ├── .gitignore
+    ├── app.js
+    ├── LICENSE
+    ├── package.json
+    └── README.md
 
 
-### 📄 Licença
-
-Este projeto está sob a licença MIT. Veja o arquivo LICENSE para mais detalhes.
-***
-Feito por Larissa Toyohashi
