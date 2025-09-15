@@ -32,7 +32,14 @@ O projeto utiliza **Node.js** e **Express.js** para construir um backend robusto
     git clone [https://github.com/larissatoyohashi/compass-uol-projeto-banco](https://github.com/larissatoyohashi/compass-uol-projeto-banco)
     ```
 
-2.  **Instale as dependências:**
+2.  **Instale o express:**
     ```bash
-    npm install
+    npm install express
     ```
+    
+## Executando a API
+
+1. **Para iniciar o servidor:**
+```bash
+    npm start
+```
