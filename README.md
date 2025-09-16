@@ -142,7 +142,7 @@ A seguir estão detalhados os endpoints disponíveis para o recurso de Contas (`
     }
     }
 
-### Consultar as Transações feitas por uma conta bancária
+### Consultar as Transações feitas por uma Conta Bancária
 
 - **Método:** `GET`
 - **URL:** `/accounts/:id/transactions`
@@ -220,28 +220,35 @@ A seguir estão detalhados os endpoints disponíveis para o recurso de Transaç�
 
 A arquitetura do projeto foi organizada para promover a separação de responsabilidades (Separation of Concerns), facilitando a manutenção e escalabilidade.
 
-    ``` bash
-    ├── controllers/
-    │   ├── accountController.js
-    │   ├── customerController.js
-    │   ├── permissionController.js
-    │   └── transactionController.js
-    ├── models/
-    │   ├── Accounts.js
-    │   ├── Customers.js
-    │   ├── Permissions.js
-    │   └── Transactions.js
-    ├── routes/
-    │   ├── accountRoutes.js
-    │   ├── customerRoutes.js
-    │   ├── permissionRoutes.js
-    │   └── transactionRoutes.js
-    ├── services/
-    │   └── (Arquivos com a lógica de negócio)
-    ├── .gitignore
-    ├── app.js
-    ├── LICENSE
-    ├── package.json
-    └── README.md
+        ``` bash
+        ├── controllers/
+        │   ├── accountController.js
+        │   ├── customerController.js
+        │   ├── permissionController.js
+        │   └── transactionController.js
+        ├── models/
+        │   ├── Accounts.js
+        │   ├── Customers.js
+        │   ├── Permissions.js
+        │   └── Transactions.js
+        ├── routes/
+        │   ├── accountRoutes.js
+        │   ├── customerRoutes.js
+        │   ├── permissionRoutes.js
+        │   └── transactionRoutes.js
+        ├── services/
+        │   └── (Arquivos com a lógica de negócio)
+        ├── .gitignore
+        ├── app.js
+        ├── LICENSE
+        ├── package.json
+        └── README.md
 
+routes/: Define os endpoints da API, os métodos HTTP (GET, POST, etc.) e os direciona para o método correspondente no Controller adequado.
+controllers/: Recebe as requisições das rotas. 
+services/: Contém toda a lógica de negócio da aplicação. Ele é chamado pelos Controllers e utiliza os Models para interagir com o banco de dados.
+models/: Define a camada de dados através dos Schemas do Mongoose. 
+app.js: Ponto de entrada principal da aplicação, onde o Express é configurado, os middlewares são aplicados e as rotas são inicializadas.
+
+    
 
