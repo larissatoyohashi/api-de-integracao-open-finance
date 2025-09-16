@@ -244,11 +244,12 @@ A arquitetura do projeto foi organizada para promover a separação de responsab
         ├── package.json
         └── README.md
 
-routes/: Define os endpoints da API, os métodos HTTP (GET, POST, etc.) e os direciona para o método correspondente no Controller adequado.
-controllers/: Recebe as requisições das rotas. 
-services/: Contém toda a lógica de negócio da aplicação. Ele é chamado pelos Controllers e utiliza os Models para interagir com o banco de dados.
-models/: Define a camada de dados através dos Schemas do Mongoose. 
-app.js: Ponto de entrada principal da aplicação, onde o Express é configurado, os middlewares são aplicados e as rotas são inicializadas.
+
+- **routes/:** Define os endpoints da API, os métodos HTTP (GET, POST, etc.) e os direciona para o método correspondente no Controller adequado.
+- **controllers/:** Recebe as requisições das rotas. 
+- **services/:** Contém toda a lógica de negócio da aplicação. Ele é chamado pelos Controllers e utiliza os Models para interagir com o banco de dados.
+- **models/:** Define a camada de dados através dos Schemas do Mongoose. 
+- **app.js:** Ponto de entrada principal da aplicação, onde o Express é configurado, os middlewares são aplicados e as rotas são inicializadas.
 
     
 
