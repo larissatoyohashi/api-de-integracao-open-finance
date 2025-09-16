@@ -244,6 +244,7 @@ A arquitetura do projeto foi organizada para promover a separação de responsab
         ├── package.json
         └── README.md
 
+---
 
 - **routes/:** Define os endpoints da API, os métodos HTTP (GET, POST, etc.) e os direciona para o método correspondente no Controller adequado.
 - **controllers/:** Recebe as requisições das rotas. 
@@ -251,5 +252,7 @@ A arquitetura do projeto foi organizada para promover a separação de responsab
 - **models/:** Define a camada de dados através dos Schemas do Mongoose. 
 - **app.js:** Ponto de entrada principal da aplicação, onde o Express é configurado, os middlewares são aplicados e as rotas são inicializadas.
 
-    
+## 📄 Licença
+Este projeto é distribuído sob a licença MIT. Veja o arquivo LICENSE para mais detalhes.
+Feito por Larissa Toyohashi.
 
