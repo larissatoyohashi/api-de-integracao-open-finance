@@ -53,7 +53,7 @@ _ **Criação de Transações:** Permite criar uma nova transação de crédito 
     ```bash
         npm start
     ```
-O servidor estará disponível em http://localhost:3000
+O servidor estará disponível em http://localhost:4000
 
 ## Endpoints da API
 
@@ -140,7 +140,37 @@ A seguir estão detalhados os endpoints disponíveis para o recurso de Contas (`
     "balance": {
         "$numberDecimal": "0.00"
     }
-}
+    }
+
+### Consultar as Transações feitas por uma conta bancária
+
+- **Método:** `GET`
+- **URL:** `/accounts/:id/transactions`
+- **Resposta de Sucesso (200 OK):**
+
+  ```json
+    [{
+        "_id": "txn_c7b",
+        "date": "2020-12-13",
+        "description": "Transfer via pix",
+        "amount": {
+            "$numberDecimal": "1000"
+        },
+        "type": "debit",
+        "category": "test",
+        "__v": 0
+    },
+    {
+        "_id": "txn_62c",
+        "date": "2020-12-13",
+        "description": "Transfer via pix",
+        "amount": {
+            "$numberDecimal": "1000"
+        },
+        "type": "debit",
+        "category": "test",
+        "__v": 0
+    }]
 
 
 ***
@@ -190,7 +220,7 @@ A seguir estão detalhados os endpoints disponíveis para o recurso de Transaç�
 
 A arquitetura do projeto foi organizada para promover a separação de responsabilidades (Separation of Concerns), facilitando a manutenção e escalabilidade.
 
-``` bash
+    ``` bash
     ├── controllers/
     │   ├── accountController.js
     │   ├── customerController.js

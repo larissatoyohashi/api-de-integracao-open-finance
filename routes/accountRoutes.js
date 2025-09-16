@@ -6,6 +6,8 @@ accountRoutes.get("/accounts", accountController.getAllaccounts);
 
 accountRoutes.get("/accounts/:id/balance", accountController.getBalanceFromAccount)
 
+accountRoutes.get("/accounts/:id/transactions", accountController.getTransactionsFromAccount)
+
 accountRoutes.post("/accounts", accountController.createAccount);
 
 export default accountRoutes

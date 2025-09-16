@@ -23,6 +23,7 @@ const createTransaction = async (req,res) => {
             console.log(error);
             res.status(500).json({error : 'Erro interno do Servidor'});
         }
+
 }
 
 export default {getAllTransactions, createTransaction}

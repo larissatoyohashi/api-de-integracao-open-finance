@@ -57,10 +57,20 @@ class accountService {
             }
         }
 
-    async getOne(id){
+    async getOne(_id){
         try{
-           const account = await Account.findById(id).select('balance');
+           const account = await Account.findById(_id).select('balance');
         return account;
+
+        } catch(error){
+            console.log(error);
+        }
+    }
+
+     async getTransactions(_id){
+        try{
+           const account = await Account.findById(_id).populate('transactions');
+        return account.transactions;
 
         } catch(error){
             console.log(error);
