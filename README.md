@@ -39,8 +39,7 @@ _ **Criação de Transações:** Permite criar uma nova transação de crédito 
 
 1.  **Clone o repositório:**
     ```bash
-    git clone [https://github.com/larissatoyohashi/compass-uol-projeto-banco](https://github.com/larissatoyohashi/compass-uol-projeto-banco)
-    ```
+    git clone https://github.com/larissatoyohashi/api-de-integracao-open-finance
 
 2.  **Instale o express:**
     ```bash
