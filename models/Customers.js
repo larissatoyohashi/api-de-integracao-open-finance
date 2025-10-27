@@ -14,7 +14,7 @@ const customerSchema = new mongoose.Schema({
     },
 
     cpf : {
-        type : Number,
+        type : String,
         required : true,
         unique : true,
     },
@@ -24,16 +24,35 @@ const customerSchema = new mongoose.Schema({
         required : true,
     },
 
+     password: {
+        type: String,
+        required: [true, 'A senha é obrigatória.'],
+        select: false, 
+    },
+
     accounts: [{
         type : String,
-        ref : 'Account'
+        ref : 'Account',
     }]
 
     }, {
         _id : false,
         versionKey : false
-
 });
+
+// customerSchema.pre('save', async function(next) {
+//     if (!this.isModified('password')) {
+//         return next();
+//     }
+    
+//     try {
+//         const salt = await bcrypt.genSalt(10);
+//         this.password = await bcrypt.hash(this.password, salt);
+//         next();
+//     } catch (error) {
+//         next(error);
+//     }
+// });
 
 const Customer = mongoose.model('Customer', customerSchema);
 

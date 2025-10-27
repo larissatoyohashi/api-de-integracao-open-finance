@@ -1,14 +1,13 @@
 import mongoose from "mongoose";
-import Transaction from "../models/Transactions.js"
+// Mantive seus imports, assumindo que os caminhos estão corretos no seu projeto
+import Transaction from "../models/Transactions.js" 
 import Account from "../models/Accounts.js"
 import Decimal from 'decimal.js';
 import { randomInt } from 'node:crypto';
 
-
-
 class transactionService{
 
-   async newTransaction (_id, date, description, amount, type, category) {
+    async newTransaction (_id, date, description, amount, type, category) {
         try {
             const account = await Account.findById(_id);
 
@@ -22,16 +21,21 @@ class transactionService{
 
             const normalizedType = type.toLowerCase();
             
+
             if (normalizedType === 'credit') { 
+                newBalance = currentBalance.add(transactionAmount); 
+            
+            } else if (normalizedType === 'debit') {
+
                 if (currentBalance.lessThan(transactionAmount)) {
                     throw new Error('Saldo insuficiente para realizar a operação.');
                 }
-                newBalance = currentBalance.sub(transactionAmount); 
-            } else if (normalizedType === 'debit') {
-                newBalance = currentBalance.add(transactionAmount); 
+                newBalance = currentBalance.sub(transactionAmount);
+
             } else {
                 throw new Error('Tipo de transação inválido');
             }
+
 
             account.balance = mongoose.Types.Decimal128.fromString(newBalance.toFixed(2));
 
@@ -46,7 +50,6 @@ class transactionService{
                 if (!existingTransaction) {
                     idExists = false;
                 }
-
             }
 
             const newTransaction = new Transaction({
@@ -65,20 +68,37 @@ class transactionService{
             return newTransaction;
             
         } catch(error){
-            console.log(error)
+            throw error; 
         }
     }
 
      async getAll()
-        {
-            try {
-                const transaction = await Transaction.find();
-                return transaction;
-            } catch (error) {
-                console.log(error);
-            }
+     {
+         try {
+             const transaction = await Transaction.find();
+             return transaction;
+         } catch (error) {
+             throw error; 
+         }
+     }
+
+       async getTransactionsByAccountId(accountId) {
+        try {
+            const account = await Account.findById(accountId).populate('transactions');
+
+            if (!account) {
+                throw new Error('Conta não encontrada.');
+            } 
+            return account.transactions;
+
+        } catch (error) {
+            throw error; 
         }
+    }
+
 }
 
 
+
 export default new transactionService();
+

@@ -1,10 +1,20 @@
 import Customer from "../models/Customers.js"
 import { randomInt } from 'node:crypto';
+import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
+import 'dotenv/config';
+
+const JWTsecret = process.env.JWTSECRET;
+
+if (!JWTsecret) {
+    console.error("ERRO GRAVE: JWT_SECRET não está definido nas variáveis de ambiente!");
+    process.exit(1); // Para a aplicação se o segredo não existir
+}
 
 
 class customerService {
 
-    async Create( _id, name, cpf , email ){
+    async create( name, cpf , email, password){
 
             try {
 
@@ -21,12 +31,15 @@ class customerService {
                 }
 
             }
+                const saltRounds = 10; 
+                const hashedPassword = await bcrypt.hash(password, saltRounds);
 
                 const newCustomer = new Customer ({
                     _id : newCustomerId,
                     name,
                     cpf,
-                    email
+                    email,
+                    password: hashedPassword
                 });
                 await newCustomer.save()
             }catch (error){
@@ -43,6 +56,48 @@ class customerService {
             console.log(error);
         }
     }
-}
+
+   async getOne(email) {
+        try{
+            const customer = await Customer.findOne({email : email}).select('+password');
+            return customer;
+        } catch(error){
+                console.log(error)
+            throw error;
+            }
+        }
+        
+
+        async login(email, password) {
+        
+        const user = await this.getOne(email);
+
+        if (!user) {
+            throw new Error("Credenciais inválidas!");
+        }
+
+        const isMatch = await bcrypt.compare(password, user.password);
+
+        if (!isMatch) {
+            throw new Error("Credenciais inválidas!");
+        }
+
+        try {
+            const token = jwt.sign(
+                { id: user._id, email: user.email },
+                JWTsecret,
+                { expiresIn: "48h" }
+            );
+
+            return { token: token };
+
+        } catch (jwtError) {
+            console.log("Erro ao gerar token JWT:", jwtError);
+            throw new Error("Erro ao processar autenticação.");
+        }
+    }
+
+    }
+
 
 export default new customerService();

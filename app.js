@@ -1,6 +1,5 @@
 import express from "express";
 import mongoose from "mongoose";
-import Customer from "./models/Customers.js";
 import accountRoutes from "./routes/accountRoutes.js"
 import customerRoutes from "./routes/customerRoutes.js";
 import transactionRoutes from "./routes/transactionRoutes.js"
@@ -16,14 +15,16 @@ app.use('/',accountRoutes);
 app.use('/',transactionRoutes);
 app.use('/',permissionRoutes)
 
+app.get('/', (req, res) => { res.json({ status: 'API está rodando' });});
 
 
 mongoose.connect("mongodb://127.0.0.1:27017/api");
 
-const port = 4000;
-app.listen (port, (error) =>{
-    if (error){
-        console.log(error)
-    }
-    console.log(`API rodando em http://localhost:${port}`);
-})
+const port = process.env.PORT || 4000;
+app.listen(port, (error) => {
+  if (error) {
+    console.log(error);
+  }
+  console.log(`API rodando em http://localhost:${port}.
+        `);
+});

@@ -13,9 +13,9 @@ const getAllTransactions = async (req, res) => {
 
 const createTransaction = async (req,res) => {
         try {
-            const{_id, date, description, amount, type, category}= req.body;
+            const{accountId, date, description, amount, type, category}= req.body;
 
-            const newTransaction = await transactionService.newTransaction(_id, date, description,amount, type, category);
+            const newTransaction = await transactionService.newTransaction(accountId, date, description,amount, type, category);
 
             res.status(201).json({transaction : newTransaction});
 
@@ -26,4 +26,18 @@ const createTransaction = async (req,res) => {
 
 }
 
-export default {getAllTransactions, createTransaction}
+const getAllTransactionsFromAccount = async (req, res) => {
+    try {
+        const { id } = req.params; 
+        const transactions = await transactionService.getTransactionsByAccountId(id);
+        res.status(200).json({ transactions }); 
+
+    } catch (error) {
+        if (error.message.includes('Conta não encontrada')) {
+            return res.status(404).json({ message: error.message });
+        }
+        res.status(500).json({ message: 'Erro interno do servidor', error: error.message });
+    }
+};
+
+export default {getAllTransactions, createTransaction, getAllTransactionsFromAccount}

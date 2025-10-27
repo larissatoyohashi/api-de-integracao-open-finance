@@ -6,4 +6,6 @@ transactionRoutes.get("/transactions", transactionController.getAllTransactions)
 
 transactionRoutes.post("/transactions", transactionController.createTransaction);
 
+transactionRoutes.get("/transactions/:id", transactionController.getAllTransactionsFromAccount)
+
 export default transactionRoutes

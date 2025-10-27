@@ -47,8 +47,13 @@ const getTransactionsFromAccount = async(req,res) => {
 
 const createAccount = async (req,res) => {
     try {  
-        const { _id, type, branch, number, balance } = req.body;
-        const newAccount = await accountService.createAccountForCustomer(_id, type, branch, number, balance);
+        const { customerId, type, branch, number, balance } = req.body;
+        const newAccount = await accountService.createAccountForCustomer(customerId, type, branch, number, balance);
+
+        if (newAccount instanceof Error) {
+            return res.status(404).json({ message: newAccount.message });
+        }
+
         res.status(201).json({ account: newAccount });
 
     } catch (error){
