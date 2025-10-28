@@ -1,7 +1,7 @@
 import express from "express";
 const accountRoutes = express.Router();
 import accountController from "../controllers/accountController.js";
-import authMiddleware from "../middleware/Auth.js"; // Mude de 'Auth' para 'authMiddleware' (ou o nome real)
+import authMiddleware from "../middleware/Auth.js"; 
 
 accountRoutes.get("/accounts", authMiddleware, accountController.getAllaccounts);
 
