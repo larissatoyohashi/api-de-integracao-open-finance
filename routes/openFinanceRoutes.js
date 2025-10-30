@@ -6,19 +6,19 @@ import authMiddleware from "../middleware/Auth.js";
 
 const openFinanceRoutes = express.Router();
 
-openFinanceRoutes.get("/openfinance/customers/:id", customerController.getCustomer);
+openFinanceRoutes.get("/openfinance/customers/:id",authMiddleware, customerController.getCustomer);
 
-openFinanceRoutes.get("/openfinance/customers/:id/accounts", customerController.getAccounts);
+openFinanceRoutes.get("/openfinance/customers/:id/accounts",authMiddleware, customerController.getAccounts);
 
-openFinanceRoutes.get("/openfinance/accounts/:id/balance", accountController.getBalanceFromAccount);
+openFinanceRoutes.get("/openfinance/accounts/:id/balance",authMiddleware, accountController.getBalanceFromAccount);
 
-openFinanceRoutes.get("/openfinance/accounts/:id/transactions", accountController.getTransactionsFromAccount);
+openFinanceRoutes.get("/openfinance/accounts/:id/transactions",authMiddleware, accountController.getTransactionsFromAccount);
 
-openFinanceRoutes.post("/openfinance/consents", consentController.createConsent);
+openFinanceRoutes.post("/openfinance/consents",authMiddleware, consentController.createConsent);
 
 //Falta adicionar o service
-openFinanceRoutes.get("/openfinance/consents/:id", consentController.getConsentById);
+openFinanceRoutes.get("/openfinance/consents/:id",authMiddleware, consentController.getConsentById);
 
-openFinanceRoutes.delete("/openfinance/consents/:id", consentController.deleteConsent);
+openFinanceRoutes.delete("/openfinance/consents/:id",authMiddleware, consentController.deleteConsent);
 
 export default openFinanceRoutes
