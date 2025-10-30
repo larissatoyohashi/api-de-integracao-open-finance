@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const permissionSchema = new mongoose.Schema({
+const consentSchema = new mongoose.Schema({
 
     consent : {
         type : Boolean,
@@ -15,6 +15,6 @@ const permissionSchema = new mongoose.Schema({
 
 })
 
-const Permission = mongoose.model('Permission', permissionSchema);
+const Consent = mongoose.model('Consent', consentSchema);
 
-export default Permission;
+export default Consent;

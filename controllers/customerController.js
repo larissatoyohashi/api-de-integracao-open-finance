@@ -53,9 +53,45 @@ const loginCustomer = async (req, res) => {
     }
 };
 
+const getCustomer = async(req,res) => {
+      try {
+        const { id } = req.params;
+        const customer = await customerService.getOneById(id);
+
+        if (!customer) {
+            return res.status(404).json({ message: 'Cliente não encontrada' });
+        }
+
+        res.status(200).json(customer);
+
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ error: 'Erro interno do servidor' });
+    }
+}
+
+const getAccounts = async(req,res) => {
+      try {
+        const { id } = req.params;
+        const customer = await customerService.getAccountsFromCustomers(id);
+
+        if (!customer) {
+            return res.status(404).json({ message: 'Cliente não encontrada' });
+        }
+
+        res.status(200).json(customer);
+
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ error: 'Erro interno do servidor' });
+    }
+}
+
 export default {
     getAllCustomers,
     createCustomer,
-    loginCustomer
+    loginCustomer,
+    getCustomer,
+    getAccounts
 };
 

@@ -66,6 +66,27 @@ class customerService {
             throw error;
             }
         }
+
+    async getOneById(_id){
+        try{
+           const customer = await Customer.findById(_id);
+        return customer;
+
+        } catch(error){
+            console.log(error);
+        }
+    }
+
+    async getAccountsFromCustomers(_id){
+        try{
+           const customer = await Customer.findById(_id).select("accounts");
+        return customer;
+
+        } catch(error){
+            console.log(error);
+        }
+    }
+
         
 
         async login(email, password) {

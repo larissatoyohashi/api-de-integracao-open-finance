@@ -3,7 +3,8 @@ import mongoose from "mongoose";
 import accountRoutes from "./routes/accountRoutes.js"
 import customerRoutes from "./routes/customerRoutes.js";
 import transactionRoutes from "./routes/transactionRoutes.js"
-import permissionRoutes from "./routes/permissionRoutes.js"
+import permissionRoutes from "./routes/consentRoutes.js"
+import openFinanceRoutes from "./routes/openFinanceRoutes.js"
 
 
 const app = express();
@@ -13,7 +14,9 @@ app.use(express.json());
 app.use('/',customerRoutes);
 app.use('/',accountRoutes);
 app.use('/',transactionRoutes);
-app.use('/',permissionRoutes)
+app.use('/',permissionRoutes);
+app.use('/', openFinanceRoutes)
+
 
 app.get('/', (req, res) => { res.json({ status: 'API está rodando' });});
 
