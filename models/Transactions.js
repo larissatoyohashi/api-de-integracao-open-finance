@@ -29,8 +29,10 @@ const transactionSchema = new mongoose.Schema({
 
     category : {
         type : String,
-        required : true
-    }
+        required : true,
+        enum : ['Renda','Poupança', 'Despesa Fixa', 'Lazer', 'Imprevistos', 'Risco']
+    },
+
 } , {
     toJSON: {
         transform: function (doc, ret) {
