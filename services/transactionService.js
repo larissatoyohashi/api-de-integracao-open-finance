@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-// Mantive seus imports, assumindo que os caminhos estão corretos no seu projeto
 import Transaction from "../models/Transactions.js" 
 import Account from "../models/Accounts.js"
 import Decimal from 'decimal.js';

@@ -8,7 +8,7 @@ const JWTsecret = process.env.JWTSECRET;
 
 if (!JWTsecret) {
     console.error("ERRO GRAVE: JWT_SECRET não está definido nas variáveis de ambiente!");
-    process.exit(1); // Para a aplicação se o segredo não existir
+    process.exit(1);
 }
 
 

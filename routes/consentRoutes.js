@@ -1,11 +1,17 @@
 import express from "express";
 const consentRoutes = express.Router();
 import consentController from "../controllers/consentController.js";
+import externalConsentController from "../controllers/externalConsentController.js";
 import authMiddleware from "../middleware/Auth.js"; 
 
 
 consentRoutes.get("/consents",authMiddleware, consentController.getAllConsents);
 
-consentRoutes.post("/consents",authMiddleware, consentController.createConsent)
+consentRoutes.post("/consents",authMiddleware, consentController.createConsent);
 
-export default consentRoutes
+consentRoutes.delete('/consents/:id_external_consent/customer/:id_customer', externalConsentController.revokeExternalConsent);
+
+consentRoutes.post('/external-consents', externalConsentController.createExternalConsent);
+
+
+export default consentRoutes;
