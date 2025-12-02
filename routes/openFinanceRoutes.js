@@ -15,6 +15,7 @@ openFinanceRoutes.get("/openfinance/accounts/:id/balance",authMiddleware, accoun
 openFinanceRoutes.get("/openfinance/accounts/:id/transactions",authMiddleware, accountController.getTransactionsFromAccount);
 
 openFinanceRoutes.post("/openfinance/consents",authMiddleware, consentController.createConsent);
+
 openFinanceRoutes.get("/openfinance/consents/:id",authMiddleware, consentController.getConsentById);
 
 openFinanceRoutes.delete("/openfinance/consents/:id",authMiddleware, consentController.deleteConsent);
